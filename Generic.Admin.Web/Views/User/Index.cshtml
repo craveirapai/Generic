@@ -1,0 +1,97 @@
+﻿@model IEnumerable<Generic.Admin.Web.Models.UserViewModels>
+
+
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+
+            
+            $("a#lnkExcluir").click(function (e) {
+                e.preventDefault();
+                $("#modalConfirmation").find("button.btn-danger").attr("data-email", $(this).attr("data-email"));
+                $("#modalConfirmation").modal("show");
+            });
+
+            $("button.btn-danger").click(function () {
+
+                var email = $(this).attr("data-email");
+
+                $.ajax({
+                    url: "/User/Delete?email=" + email,
+                    contentType: "application/json; charset=utf-8",
+                    type: "DELETE",
+                    success: function () {
+                        $("#modalConfirmation").modal("hide");
+                        $("a#lnkExcluir[data-email='" + email + "'").closest("tr").fadeOut("slow");
+                    }
+                });
+            });
+        });
+    </script>
+}
+<div class="row">
+    <div class="col-sm-12">
+        <section class="panel">
+            <header class="panel-heading">
+                Usuários
+            </header>
+            <div class="panel-body">
+                <div class="adv-table editable-table ">
+                    <br />
+                    <br />
+                    <br />
+                    <table class="table">
+                        <tr>
+                            <th>
+                                Nome
+                            </th>
+                            <th>
+                                Email
+                            </th>
+                            <th>
+                                Ação
+                            </th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @item.Name
+                                </td>
+                                <td>
+                                    @item.Email
+                                </td>
+                                <td>
+                                    <a href="#" id="lnkExcluir" class="btn btn-danger" data-email="@item.Email">Deletar</a>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+<div class="modal fade" id="modalConfirmation" tabindex="-1" role="dialog" aria-labelledby="modalConfirmation" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Confirmação de Exclusão</h4>
+            </div>
+            <div class="modal-body">
+                <strong>Deseja realmente excluir esse registro?</strong>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-danger">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
