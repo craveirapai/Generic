@@ -50,8 +50,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Bin\AutoMapper.dll</HintPath>
+      <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="ImageResizer, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ImageResizer.4.0.5\lib\net45\ImageResizer.dll</HintPath>
@@ -1201,8 +1201,6 @@
     <Content Include="Design\bs3\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Design\bs3\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Design\bs3\fonts\glyphicons-halflings-regular.woff" />
-    <None Include="Properties\PublishProfiles\tonnusprdpainel - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\tonnusprdpainel - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\ai.1.0.4-build00190.js" />
     <Content Include="Scripts\ai.1.0.4-build00190.min.js" />
